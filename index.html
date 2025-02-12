@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="controls" id="controls">
+        <label for="width">Ширина:</label>
+        <input type="number" id="width" min="4" max="11" value="4">
+
+        <label for="height">Высота:</label>
+        <input type="number" id="height" min="3" max="6" value="3">
+
+        <button class="button-success" id="start-button">Старт</button>
+    </div>
+
+    <div class="board0">
+        <div class="board" id="board"></div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
