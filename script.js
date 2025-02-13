@@ -1,12 +1,9 @@
-// const card = document.getElementById('card');
-//
-// card.addEventListener('click', () => {
-//     card.classList.toggle('flipped');
-// })
+const LRMargins = 70;
+const HMargins = 20;
 
 const emojis = ['🐶', '🐱', '🐭', '🦊', '🐻', '🐼', '🦁', '🐷', '🐸', '🐵', '🦄',
-                        '🐬', '🦖', '🐙', '🦧', '🦋', '🦚', '🐲', '🐣', '🐩', '🐦‍🔥', '🍄',
-                        '🍄‍🟫', '🦔', '🪵', '🦩', '⛄️', '🌕', '🌑', '🌎', '❄️', '🍏', '🍋']
+                 '🐬', '🦖', '🐙', '🦧', '🦋', '🦚', '🐲', '🐣', '🐩', '🐦‍🔥', '🍄',
+                '🍄‍🟫', '🦔', '🪵', '🦩', '⛄️', '🌕', '🌑', '🌎', '❄️', '🍏', '🍋']
 
 let numberOfCards = 0;
 let firstCard = null;
@@ -34,8 +31,18 @@ function startGame() {
 function setupBoard(width, height) {
     const board = document.getElementById('board');
     board.innerHTML = '';
-    board.style.gridTemplateColumns = `repeat(${width}, 100px)`;
-    board.style.gridTemplateRows = `repeat(${height}, 100px)`;
+    const docWidth = document.documentElement.clientWidth - LRMargins * 2;
+    const docHeight = document.documentElement.clientHeight - HMargins * 2 - 100 * 2;
+
+    const cardWidth = Math.floor(docWidth / width);
+    const cardHeight = Math.floor(docHeight / height);
+
+    const cardSize = Math.min(cardHeight, cardWidth);
+    
+    console.log(cardWidth, cardHeight);
+    
+    board.style.gridTemplateColumns = `repeat(${width}, ${cardSize}px)`;
+    board.style.gridTemplateRows = `repeat(${height}, ${cardSize}px)`;
 
     numberOfCards = width * height;
 
@@ -51,6 +58,7 @@ function setupBoard(width, height) {
     gameEmojis.forEach((emoji) => {
         const card = document.createElement('div');
         card.classList.add('card');
+        card.style.fontSize = (cardSize * 0.5) + 'px';
         card.dataset.emoji = emoji;
 
         const emojiElement = document.createElement('span');
