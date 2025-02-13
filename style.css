@@ -106,8 +106,8 @@ input {
     height: 100vh;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     .controls {
         width: 95%;
     }
-}
+} */
